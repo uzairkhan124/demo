@@ -22,7 +22,7 @@ app.use((req,res,next)=> {
     };
     next();
 });
-//console.log('Hello zain');
+console.log('Hello zain');
 
 app.use('/products',productRoute);
 
