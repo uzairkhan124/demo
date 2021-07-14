@@ -5,6 +5,4 @@ const orderSchema = mongoose.Schema({
      product : { type : mongoose.Schema.Types.ObjectId, ref: 'Product' } ,
      quantity : { type : Number , default : 1}
 });
-//this is my test
-//tjis is from browser
 module.exports = mongoose.model('Order', orderSchema);

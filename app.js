@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const productRoute = require ('./api/routes/product');
 const orderRoute = require ('./api/routes/order');
+const userRoute = require ('./api/routes/user');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 
@@ -27,6 +28,8 @@ app.use((req,res,next)=> {
 app.use('/products',productRoute);
 
 app.use('/orders',orderRoute);
+
+app.use('/signup',userRoute);
 
 app.use((req,res,next)=> {
     const error = new Error('NOt Found');
