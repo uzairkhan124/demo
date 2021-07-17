@@ -1,5 +1,6 @@
 {
     "env" : {
-        "DB_PW" : "admin123"
+        "DB_PW" : "admin123",
+        "JWT_KEY" : "secret"
     }
 }

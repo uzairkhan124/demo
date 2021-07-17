@@ -29,7 +29,7 @@ app.use('/products',productRoute);
 
 app.use('/orders',orderRoute);
 
-app.use('/signup',userRoute);
+app.use('/user',userRoute);
 
 app.use((req,res,next)=> {
     const error = new Error('NOt Found');
