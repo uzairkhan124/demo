@@ -71,7 +71,7 @@ route.post('/login' , (req, res, next) => {
                 }, 
                 process.env.JWT_KEY,
                 {
-                    expiresIn : "1hr"
+                    expiresIn : "5hr"
                 } )
                 return res.status(200).json({
                     message : "Auth successful",

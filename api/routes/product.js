@@ -110,7 +110,7 @@ route.get('/:productId',(req,res,next)=>{
     })
 });
 
-route.patch('/:productId',(req,res,next)=>{
+route.patch('/:productId',authCheck,(req,res,next)=>{
     const id = req.params.productId ;
     const updateOps = {};
     for (const ops of req.body){
@@ -131,7 +131,7 @@ route.patch('/:productId',(req,res,next)=>{
     });
 });
 
-route.delete('/:productId',(req,res,next)=>{
+route.delete('/:productId', authCheck,(req,res,next)=>{
     const id = req.params.productId ;
     Product.remove({_id : id}).exec().then(result => {
         console.log(result)

@@ -3,8 +3,9 @@ const route = express.Router();
 const mongoose = require('mongoose');
 const Order = require('../models/order');
 const Product = require ('../models/product');
+const authCheck = require('../middleware/jwt-auth');
  
-route.get('/',(req,res,next)=>{
+route.get('/',authCheck , (req,res,next)=>{
    Order.find()
    .select('product quantity _id')
    .populate('product' , 'name')
@@ -33,7 +34,7 @@ route.get('/',(req,res,next)=>{
 });
 
 
-route.post('/',(req,res,next)=>{
+route.post('/',authCheck , (req,res,next)=>{
      Product.findById(req.body.productId)
      .then(product => {
         if (!product){
@@ -71,7 +72,7 @@ route.post('/',(req,res,next)=>{
     });
 });
 
-route.get('/:orderId', (req,res,next)=> {
+route.get('/:orderId',authCheck , (req,res,next)=> {
     Order.findById(req.params.orderId)
     .populate('product')
     .exec()
@@ -97,7 +98,7 @@ route.get('/:orderId', (req,res,next)=> {
     });
 });
 
-route.delete('/:orderId', (req,res,next)=> {
+route.delete('/:orderId',authCheck , (req,res,next)=> {
     Order.remove({_id : req.params.orderId}) 
     .exec()
     .then(result => {
